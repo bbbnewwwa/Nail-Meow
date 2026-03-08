@@ -1,5 +1,6 @@
 from aiogram import Router, F
 from aiogram.fsm import FSMContext
+from aiogram.fsm.context import FSMContext  # ← ДОБАВИТЬ ЭТУ СТРОКУ
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import CallbackQuery, Message
 import aiohttp
