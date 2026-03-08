@@ -183,7 +183,7 @@ async def process_phone(message: Message, state: FSMContext):
                         f"Телефон: {client_phone}\n"
                         f"Цена: {service['price']}₽\n\n"
                         f"Ждём вас в нашем салоне!\n"
-                        f"г. Москва, ул. Примерная, 10",
+                        f"г. Красноярск, ул. Матросова, 20, каб.101",
                         parse_mode="Markdown"
                     )
                 else:
