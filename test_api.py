@@ -17,7 +17,7 @@ try:
         db.close()
         exit()
     
-    # Добавляем услуги
+    # Добавляем услуги (category — это просто строка!)
     services = [
         Service(
             name="Маникюр классический",
@@ -132,47 +132,12 @@ try:
     db.add_all(masters)
     db.commit()
     
-    # Добавляем товары
-    products = [
-        Product(
-            name="Масло для кутикулы",
-            description="Увлажняющее масло для ухода за кутикулой",
-            price=350.00,
-            discount=0.0,
-            stock_quantity=50,
-            article="OIL-001",
-            is_active=True
-        ),
-        Product(
-            name="Крем для рук",
-            description="Питательный крем для рук",
-            price=450.00,
-            discount=10.0,
-            stock_quantity=30,
-            article="CRM-001",
-            is_active=True
-        ),
-        Product(
-            name="Лак для ногтей",
-            description="Стойкий лак для ногтей, красный",
-            price=250.00,
-            discount=0.0,
-            stock_quantity=100,
-            article="LAC-001",
-            is_active=True
-        ),
-    ]
-    
-    db.add_all(products)
-    db.commit()
-    
     print("Тестовые данные успешно добавлены!")
     print(f"Создано услуг: {len(services)}")
     print(f"Создано мастеров: {len(masters)}")
-    print(f"Создано товаров: {len(products)}")
     
 except Exception as e:
-    print(f" Ошибка: {e}")
+    print(f"Ошибка: {e}")
     db.rollback()
 finally:
     db.close()
