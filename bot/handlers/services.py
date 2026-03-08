@@ -12,7 +12,7 @@ async def show_services(callback: CallbackQuery):
     
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"{settings.API_URL}/services/") as response:
+            async with session.get(f"{settings.API_URL}/api/services/") as response:
                 if response.status == 200:
                     services = await response.json()
                     
