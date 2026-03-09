@@ -39,3 +39,10 @@ nav a {
     color: white;
     text-decoration: none;
 }
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    color: white;
+}
