@@ -8,114 +8,33 @@ router = Router()
 START_TEXT = """
 Добро пожаловать в Nail Meow!
 
-Мы рады видеть вас в нашем салоне красоты!
-
-Наши услуги:
-- Маникюр и педикюр
-- Покрытие гель-лак
-- Дизайн ногтей
-- SPA-уход
-
-Мы находимся:
+📍 Адрес:
 г. Красноярск, ул. Матросова, 20, каб. 101
 
-Режим работы:
+⏰ Режим работы:
 Ежедневно с 10:00 до 21:00
 
-Выберите действие в меню
-"""
-
-HELP_TEXT = """
-Помощь
-
-Услуги и цены - посмотреть весь прайс
-Записаться - онлайн запись на услугу
-Мои записи - просмотр ваших записей
-Контакты - как с нами связаться
-
-Как записаться:
-1. Нажмите "Записаться"
-2. Выберите услугу
-3. Выберите дату и время
-4. Введите ваше имя и телефон
-5. Подтвердите запись
-
-Если у вас остались вопросы, напишите нам!
-"""
-
-CONTACTS_TEXT = """
-Наши контакты:
-
-Адрес:
-г. Красноярск, ул. Матросова, 20, каб. 101
-
-Телефон:
-+7 (999) 123-45-67
-
-Email:
-info@nailmeow.ru
-
-Сайт:
-http://127.0.0.1:8000
-
-Режим работы:
-Пн-Вс: 10:00 - 21:00
-
-Telegram бот:
-@nailmeow_bot
+Нажмите кнопку "Контакты" для связи с нами
 """
 
 @router.message(Command("start"))
 async def cmd_start(message: Message):
-    await message.answer(
-        START_TEXT,
-        reply_markup=get_main_menu(),
-        parse_mode="Markdown"
-    )
-
-@router.message(Command("help"))
-async def cmd_help(message: Message):
-    await message.answer(
-        HELP_TEXT,
-        reply_markup=get_back_keyboard(),
-        parse_mode="Markdown"
-    )
-
-@router.callback_query(F.data == "main_menu")
-async def main_menu_callback(callback: CallbackQuery):
-    try:
-        await callback.message.edit_text(
-            START_TEXT,
-            reply_markup=get_main_menu(),
-            parse_mode="Markdown"
-        )
-    except Exception as e:
-        if "message is not modified" not in str(e):
-            raise
-    await callback.answer()
-
-@router.callback_query(F.data == "help")
-async def help_callback(callback: CallbackQuery):
-    try:
-        await callback.message.edit_text(
-            HELP_TEXT,
-            reply_markup=get_back_keyboard(),
-            parse_mode="Markdown"
-        )
-    except Exception as e:
-        if "message is not modified" not in str(e):
-            raise
-    await callback.answer()
+    await message.answer(START_TEXT, reply_markup=get_main_menu())
 
 @router.callback_query(F.data == "contacts")
 async def contacts_callback(callback: CallbackQuery):
-    try:
-        await callback.message.edit_text(
-            CONTACTS_TEXT,
-            reply_markup=get_back_keyboard(),
-            parse_mode="Markdown"
-        )
-    except Exception as e:
-        if "message is not modified" not in str(e):
-            raise
+    text = (
+        "Контакты Nail Meow\n\n"
+        "Адрес:\n"
+        "г. Красноярск, ул. Матросова, 20, каб. 101\n\n"
+        "Телефон:\n"
+        "+7 (999) 123-45-67\n\n"
+        "Email:\n"
+        "info@nailmeow.ru\n\n"
+        "Сайт:\n"
+        "http://127.0.0.1:3000\n\n"
+        "Режим работы:\n"
+        "Пн-Вс: 10:00 - 21:00"
+    )
+    await callback.message.answer(text)
     await callback.answer()
