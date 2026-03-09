@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import services, bookings, admin, bot
-from app.database import engine, Base
+from app.config import settings
+from app.routers import services, bookings, admin
 
-Base.metadata.create_all(bind=engine)
-
-app = FastAPI(title="Nail Meow API", version="1.0.0")
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    version=settings.VERSION
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,11 +16,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(services.router, prefix="/api/services", tags=["Services"])
-app.include_router(bookings.router, prefix="/api/bookings", tags=["Bookings"])
-app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])
-app.include_router(bot.router, prefix="/api/bot", tags=["Bot"])
+app.include_router(services.router, prefix=f"{settings.API_V1_STR}/services", tags=["Services"])
+app.include_router(bookings.router, prefix=f"{settings.API_V1_STR}/bookings", tags=["Bookings"])
+app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["Admin"])
 
 @app.get("/")
 async def root():
-    return {"message": "Nail Meow API is running", "version": "1.0.0"}
+    return {"message": "Nail Meow API is running", "version": settings.VERSION}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "database": "PostgreSQL"}
