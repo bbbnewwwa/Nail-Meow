@@ -5,12 +5,9 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from config import settings
 
-from handlers import start, services, booking, my_bookings
+from handlers import start, contacts
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO)
 
 async def main():
     bot = Bot(
@@ -21,9 +18,7 @@ async def main():
     dp = Dispatcher()
     
     dp.include_router(start.router)
-    dp.include_router(services.router)
-    dp.include_router(booking.router)
-    dp.include_router(my_bookings.router)
+    dp.include_router(contacts.router)
     
     print("Бот Nail Meow запущен...")
     print(f"API URL: {settings.API_URL}")
