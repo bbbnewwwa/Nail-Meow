@@ -34,7 +34,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(bookingData)
                 });
-                
+                if (response.ok) {
+                    alert('Запись успешно создана!');
+                    bookingForm.reset();
+                } else {
+                    alert('Ошибка при создании записи');
+                }
             } catch (error) {
                 alert('Ошибка: ' + error.message);
             }
