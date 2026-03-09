@@ -11,13 +11,12 @@ class Service(Base):
     name = Column(String(100), nullable=False)
     description = Column(Text)
     price = Column(Float, nullable=False)
-    duration = Column(Integer)  # минуты
+    duration = Column(Integer)
     category = Column(String(50))
     image_url = Column(String(255))
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     
-    # Связи
     bookings = relationship("Booking", back_populates="service")
 
 class Master(Base):
@@ -28,11 +27,10 @@ class Master(Base):
     specialization = Column(String(100))
     rating = Column(Float, default=0.0)
     photo_url = Column(String(255))
-    schedule = Column(Text)  # JSON или текст с графиком
+    schedule = Column(Text)
     description = Column(Text)
     is_active = Column(Boolean, default=True)
     
-    # Связи
     bookings = relationship("Booking", back_populates="master")
 
 class User(Base):
@@ -43,10 +41,9 @@ class User(Base):
     hashed_password = Column(String(255), nullable=False)
     full_name = Column(String(100))
     phone = Column(String(20))
-    role = Column(String(20), default="client")  # client, master, admin
+    role = Column(String(20), default="client")
     created_at = Column(DateTime, default=datetime.utcnow)
     
-    # Связи
     bookings = relationship("Booking", back_populates="client")
 
 class Booking(Base):
@@ -60,37 +57,10 @@ class Booking(Base):
     master_id = Column(Integer, ForeignKey("masters.id"), nullable=True)
     master_name = Column(String(100))
     appointment_date = Column(DateTime, nullable=False)
-    status = Column(String(20), default="pending")  # pending, confirmed, completed, cancelled
+    status = Column(String(20), default="pending")
     comment = Column(Text)
     created_at = Column(DateTime, default=datetime.utcnow)
     
-    # Связи
     client = relationship("User", back_populates="bookings")
     service = relationship("Service", back_populates="bookings")
     master = relationship("Master", back_populates="bookings")
-
-class Product(Base):
-    __tablename__ = "products"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(100), nullable=False)
-    description = Column(Text)
-    price = Column(Float, nullable=False)
-    discount = Column(Float, default=0.0)
-    stock_quantity = Column(Integer, default=0)
-    article = Column(String(50), unique=True)
-    image_url = Column(String(255))
-    characteristics = Column(Text)  # JSON
-    is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class Review(Base):
-    __tablename__ = "reviews"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    service_id = Column(Integer, ForeignKey("services.id"), nullable=True)
-    master_id = Column(Integer, ForeignKey("masters.id"), nullable=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    rating = Column(Integer, nullable=False)  # 1-5
-    comment = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
