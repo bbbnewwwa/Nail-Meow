@@ -62,3 +62,9 @@ nav a {
     margin: 0 auto;
     padding: 3rem 2rem;
 }
+
+.map {
+    margin-top: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
