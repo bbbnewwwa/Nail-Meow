@@ -46,3 +46,13 @@ nav a {
     background: linear-gradient(135deg, #ff69b4, #ffb6c1);
     color: white;
 }
+
+.btn {
+    display: inline-block;
+    background: #ff1493;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    margin-top: 1rem;
+}
