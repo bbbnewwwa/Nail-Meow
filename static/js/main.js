@@ -28,6 +28,16 @@ document.addEventListener('DOMContentLoaded', async () => {
                 comment: document.getElementById('comment').value,
                 status: 'pending'
             };
+            try {
+                const response = await fetch(`${API_URL}/bookings/`, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(bookingData)
+                });
+                
+            } catch (error) {
+                alert('Ошибка: ' + error.message);
+            }
         });
     }
 });
