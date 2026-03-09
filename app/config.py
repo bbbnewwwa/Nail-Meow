@@ -6,18 +6,12 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api"
     
-    # Database
-    DATABASE_URL: str = "sqlite:///./nailmeow.db"
+    DATABASE_URL: str = "postgresql://postgres:0705@localhost:5432/nailmeow"
     
-    # Security
-    SECRET_KEY: str = "your-secret-key-change-in-production"
+    SECRET_KEY: str = "your-secret-key-change-this"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     
-    # Telegram Bot
-    TELEGRAM_BOT_LINK: str = "https://t.me/nailmeow_bot"
-    
-    # Admin
     ADMIN_EMAIL: str = "admin@nailmeow.ru"
     
     class Config:
