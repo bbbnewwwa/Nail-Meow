@@ -68,3 +68,12 @@ nav a {
     border-radius: 10px;
     overflow: hidden;
 }
+
+#bookingForm {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+}
+
