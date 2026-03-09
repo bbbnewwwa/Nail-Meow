@@ -9,3 +9,9 @@ body {
     background: #fff5f7;
     color: #333;
 }
+
+header {
+    background: #ff69b4;
+    color: white;
+    padding: 1rem;
+} 
