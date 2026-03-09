@@ -15,9 +15,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Ошибка загрузки услуг:', error);
         }
     }
-    
+
     const bookingForm = document.getElementById('bookingForm');
     if (bookingForm) {
-        
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+        });
     }
 });
