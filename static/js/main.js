@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const serviceSelect = document.getElementById('service');
     if (serviceSelect) {
         try {
-            
+            const response = await fetch(`${API_URL}/services/`);
+            const services = await response.json();
         } catch (error) {
             console.error('Ошибка загрузки услуг:', error);
         }
