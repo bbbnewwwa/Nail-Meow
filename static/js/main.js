@@ -20,7 +20,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (bookingForm) {
         bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+            const bookingData = {
+                service_id: parseInt(document.getElementById('service').value),
+                client_name: document.getElementById('clientName').value,
+                client_phone: document.getElementById('clientPhone').value,
+                appointment_date: document.getElementById('appointmentDate').value,
+                comment: document.getElementById('comment').value,
+                status: 'pending'
+            };
         });
     }
 });
