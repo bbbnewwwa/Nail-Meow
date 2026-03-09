@@ -56,3 +56,9 @@ nav a {
     text-decoration: none;
     margin-top: 1rem;
 }
+
+.contacts {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
