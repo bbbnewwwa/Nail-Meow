@@ -21,4 +21,4 @@ inspector = inspect(engine)
 tables = inspector.get_table_names()
 print(f" Создано таблиц: {len(tables)}")
 for table in tables:
-    print(f"   ✓ {table}")
+    print(f"    {table}")
