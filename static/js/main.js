@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const response = await fetch(`${API_URL}/services/`);
             const services = await response.json();
+            
+            serviceSelect.innerHTML = services.map(service => 
+                `<option value="${service.id}">${service.name} - ${service.price}₽</option>`
+            ).join('');
         } catch (error) {
             console.error('Ошибка загрузки услуг:', error);
         }
