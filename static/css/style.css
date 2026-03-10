@@ -485,6 +485,72 @@ footer {
 .btn-telegram:hover {
     animation: none;
 }
+/* ===== TELEGRAM БЛОК ===== */
+.booking-info {
+    background: linear-gradient(135deg, var(--pink-light), var(--white));
+    border: 2px solid var(--pink-soft);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: var(--shadow);
+}
+
+.booking-info h3 {
+    color: var(--pink-dark);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.booking-info p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Кнопка Telegram - переопределяем общие стили кнопок */
+.booking-info .btn-telegram {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #0088cc, #0099ff) !important;
+    color: white !important;
+    padding: 1rem 2.5rem !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    margin: 0 auto !important;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+    transition: all 0.3s ease;
+    border: none !important;
+}
+
+.booking-info .btn-telegram:hover {
+    background: linear-gradient(135deg, #0099ff, #0088cc) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+}
+
+.booking-info .btn-telegram::before {
+    content: "📱";
+    font-size: 1.3rem;
+}
+
+/* Пульсация */
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
+    50% { box-shadow: 0 4px 25px rgba(0, 136, 204, 0.5); }
+}
+
+.booking-info .btn-telegram {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.booking-info .btn-telegram:hover {
+    animation: none;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
