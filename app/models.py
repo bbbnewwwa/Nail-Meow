@@ -19,20 +19,6 @@ class Service(Base):
     
     bookings = relationship("Booking", back_populates="service")
 
-class Master(Base):
-    __tablename__ = "masters"
-    
-    id = Column(Integer, primary_key=True, index=True)
-    full_name = Column(String(100), nullable=False)
-    specialization = Column(String(100))
-    rating = Column(Float, default=0.0)
-    photo_url = Column(String(255))
-    schedule = Column(Text)
-    description = Column(Text)
-    is_active = Column(Boolean, default=True)
-    
-    bookings = relationship("Booking", back_populates="master")
-
 class User(Base):
     __tablename__ = "users"
     
@@ -54,8 +40,6 @@ class Booking(Base):
     client_name = Column(String(100), nullable=False)
     client_phone = Column(String(20), nullable=False)
     service_id = Column(Integer, ForeignKey("services.id"), nullable=False)
-    master_id = Column(Integer, ForeignKey("masters.id"), nullable=True)
-    master_name = Column(String(100))
     appointment_date = Column(DateTime, nullable=False)
     status = Column(String(20), default="pending")
     comment = Column(Text)
@@ -63,4 +47,3 @@ class Booking(Base):
     
     client = relationship("User", back_populates="bookings")
     service = relationship("Service", back_populates="bookings")
-    master = relationship("Master", back_populates="bookings")
