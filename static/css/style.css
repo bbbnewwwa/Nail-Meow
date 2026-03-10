@@ -329,6 +329,33 @@ nav a.active {
 
 /* АДМИН ПАНЕЛЬ */
 
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+}
+
+.admin-container h1 {
+    color: var(--pink-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.admin-section {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.admin-section h2 {
+    color: var(--pink-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
 /* О НАС */
 
 /* FOOTER */
