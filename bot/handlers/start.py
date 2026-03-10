@@ -14,7 +14,7 @@ START_TEXT = """
 ⏰ Режим работы:
 Ежедневно с 10:00 до 21:00
 
-Нажмите кнопку "Контакты" для связи с нами
+Нажмите "Контакты" для связи с нами
 """
 
 @router.message(Command("start"))
@@ -27,7 +27,7 @@ async def contacts_callback(callback: CallbackQuery):
         "Контакты Nail Meow\n\n"
         "Адрес:\n"
         "г. Красноярск, ул. Матросова, 20, каб. 101\n\n"
-        "Телефон:\n"
+        "Телефон:**\n"
         "+7 (999) 123-45-67\n\n"
         "Email:\n"
         "info@nailmeow.ru\n\n"
