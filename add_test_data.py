@@ -2,7 +2,9 @@ from sqlalchemy.orm import Session
 from app.database import SessionLocal, engine, Base
 from app.models import Service
 
-# Создаём таблицы
+print("🔄 Создание таблиц и добавление тестовых данных...")
+
+# Создаём таблицы (на всякий случай)
 Base.metadata.create_all(bind=engine)
 
 db = SessionLocal()
@@ -14,6 +16,8 @@ try:
         print("⚠️ Данные уже существуют!")
         db.close()
         exit()
+    
+    print("➕ Добавление услуг...")
     
     # Услуги
     services = [
@@ -42,35 +46,4 @@ try:
             is_active=True
         ),
         Service(
-            name="Дизайн ногтей",
-            description="Дизайн стразами, роспись, френч. Индивидуальный подход к каждому клиенту.",
-            price=300.00,
-            duration=30,
-            category="Дизайн",
-            is_active=True
-        ),
-        Service(
-            name="SPA-уход",
-            description="Комплексный уход за ногтями и кутикулой. Питание и увлажнение.",
-            price=600.00,
-            duration=45,
-            category="Уход",
-            is_active=True
-        ),
-    ]
-    
-    db.add_all(services)
-    db.commit()
-    
-    print("✅ Тестовые данные добавлены!")
-    print(f"Услуг: {len(services)}")
-    print("\n📋 Добавленные услуги:")
-    for service in services:
-        print(f"  - {service.name}: {service.price} ₽ ({service.duration} мин)")
-    
-except Exception as e:
-    print(f"❌ Ошибка: {e}")
-    db.rollback()
-
-finally:
-    db.close()
+            name="Диз
