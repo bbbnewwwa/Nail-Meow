@@ -23,6 +23,39 @@
         <h1>Онлайн запись</h1>
         <p>Запишитесь на удобное время</p>
     </section>
+    <section class="booking-container">
+        <label>
+                Услуга:
+                <select id="service" required>
+                    <option value="">Выберите услугу</option>
+                    <option value="1">Наращивание - 1000 ₽</option>
+                    <option value="2">Снятие - 500 ₽</option>
+                    <option value="3">Покрытие - 800 ₽</option>
+                </select>
+            </label>
+            
+            <label>
+                Дата и время:
+                <input type="datetime-local" id="appointmentDate" required>
+            </label>
+            
+            <label>
+                Ваше имя:
+                <input type="text" id="clientName" required placeholder="Иванова Мария">
+            </label>
+            
+            <label>
+                Телефон:
+                <input type="tel" id="clientPhone" required placeholder="+7 (999) 123-45-67">
+            </label>
+            
+            <label>
+                Комментарий:
+                <textarea id="comment" placeholder="Пожелания к мастеру"></textarea>
+            </label>
+            
+            <button type="submit" class="btn-submit">Записаться</button>
+    </section>
     <script src="static/js/main.js"></script>
 </body>
 </html>
