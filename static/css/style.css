@@ -165,3 +165,25 @@ nav a.active {
 .page-header p {
     color: var(--text-light);
 }
+
+/* АДАПТАЦИЯ МОБИЛЬНАЯ */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    
+    .service-card {
+        padding: 15px;
+    }
+}
