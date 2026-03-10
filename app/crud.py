@@ -12,11 +12,27 @@ def get_services(db: Session, skip: int = 0, limit: int = 100, category: Optiona
     return query.offset(skip).limit(limit).all()
 
 def create_service(db: Session, service: schemas.ServiceCreate):
-    db_service = models.Service(**service.model_dump())
+    db_service = models.Service(**service.dict())
     db.add(db_service)
     db.commit()
     db.refresh(db_service)
     return db_service
+
+def update_service(db: Session, service_id: int, service_update: dict):
+    service = get_service(db, service_id)
+    if service:
+        for key, value in service_update.items():
+            setattr(service, key, value)
+        db.commit()
+        db.refresh(service)
+    return service
+
+def delete_service(db: Session, service_id: int):
+    service = get_service(db, service_id)
+    if service:
+        db.delete(service)
+        db.commit()
+    return service
 
 def get_master(db: Session, master_id: int):
     return db.query(models.Master).filter(models.Master.id == master_id).first()
@@ -24,25 +40,12 @@ def get_master(db: Session, master_id: int):
 def get_masters(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Master).filter(models.Master.is_active == True).offset(skip).limit(limit).all()
 
-def create_master(db: Session, master: schemas.MasterCreate):
-    db_master = models.Master(**master.model_dump())
-    db.add(db_master)
-    db.commit()
-    db.refresh(db_master)
-    return db_master
-
-def get_booking(db: Session, booking_id: int):
-    return db.query(models.Booking).filter(models.Booking.id == booking_id).first()
-
-def get_bookings(db: Session, skip: int = 0, limit: int = 100, status: Optional[str] = None):
-    query = db.query(models.Booking)
-    if status:
-        query = query.filter(models.Booking.status == status)
-    return query.order_by(models.Booking.appointment_date.desc()).offset(skip).limit(limit).all()
-
 def create_booking(db: Session, booking: schemas.BookingCreate):
-    db_booking = models.Booking(**booking.model_dump())
+    db_booking = models.Booking(**booking.dict())
     db.add(db_booking)
     db.commit()
     db.refresh(db_booking)
     return db_booking
+
+def get_bookings(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Booking).order_by(models.Booking.appointment_date.desc()).offset(skip).limit(limit).all()
