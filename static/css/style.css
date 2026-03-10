@@ -220,6 +220,14 @@ nav a.active {
     margin: 1rem 0;
 }
 
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.stat-label {
+    color: var(--text-light);
+}
 
 /* АДАПТАЦИЯ МОБИЛЬНАЯ */
 @media (max-width: 768px) {
