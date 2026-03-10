@@ -19,6 +19,26 @@
     <main class="admin-container">
         <h1>🛠️ Админ-панель</h1>
         <section class="admin-section">
+            <h2>Статистика</h2>
+            <div class="stats-grid" id="statsList">
+                <div class="stat-card">
+                    <span class="stat-icon">💅</span>
+                    <div class="stat-value" id="servicesCount">0</div>
+                    <div class="stat-label">Услуг</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">👩‍🎨</span>
+                    <div class="stat-value" id="mastersCount">0</div>
+                    <div class="stat-label">Мастеров</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">📅</span>
+                    <div class="stat-value" id="bookingsCount">0</div>
+                    <div class="stat-label">Записей</div>
+                </div>
+            </div>
+        </section>
+        <section class="admin-section">
             <h2>Управление услугами</h2>
             <div id="servicesAdmin" class="admin-grid"></div>
         </section>
