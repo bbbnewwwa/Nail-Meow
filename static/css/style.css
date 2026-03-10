@@ -229,6 +229,13 @@ nav a.active {
     color: var(--text-light);
 }
 
+.services-preview h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--pink-dark);
+    font-size: 1.8rem;
+}
+
 /* формы */
 .booking-form,
 .admin-form {
@@ -456,7 +463,6 @@ footer {
     .contacts-container {
         padding: 0 1rem 2rem;
     }
-}
 
 /* анимации тест */
 
