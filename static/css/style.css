@@ -88,3 +88,63 @@ nav a.active {
     background: var(--pink-hover) !important;
     transform: translateY(-2px);
 }
+
+/* секция  hero */
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--pink-light), var(--white));
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--pink-dark);
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* кнопки */
+.btn,
+.btn-submit,
+.btn-book,
+.btn-admin,
+.btn-telegram {
+    display: inline-block;
+    background: var(--pink-main);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn:hover,
+.btn-submit:hover,
+.btn-book:hover,
+.btn-telegram:hover {
+    background: var(--pink-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-admin {
+    background: var(--pink-dark);
+}
+
+.btn-telegram {
+    background: #0088cc;
+}
+
+.btn-telegram:hover {
+    background: #006699;
+}
+
