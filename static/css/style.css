@@ -465,59 +465,7 @@ footer {
     }
 
 /* телеграм */
-.booking-info {
-    background: linear-gradient(135deg, var(--pink-light), var(--white)) !important;
-    border: 2px solid var(--pink-soft) !important;
-    border-radius: 16px !important;
-    padding: 2rem !important;
-    text-align: center !important;
-    margin: 2rem auto !important;
-    max-width: 600px !important;
-    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.15) !important;
-    display: block !important;
-}
 
-.booking-info h3 {
-    color: var(--pink-dark) !important;
-    font-size: 1.3rem !important;
-    margin-bottom: 0.5rem !important;
-    text-align: center !important;
-}
-
-.booking-info p {
-    color: var(--text-light) !important;
-    margin-bottom: 1.5rem !important;
-    text-align: center !important;
-}
-
-.btn-telegram {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
-    background: linear-gradient(135deg, #0088cc, #0099ff) !important;
-    color: white !important;
-    padding: 1rem 2.5rem !important;
-    border-radius: 50px !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    margin: 0 auto !important;
-    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3) !important;
-    transition: all 0.3s ease !important;
-}
-
-.btn-telegram:hover {
-    background: linear-gradient(135deg, #0099ff, #0088cc) !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4) !important;
-}
-
-
-.btn-telegram::before {
-    content: "📱" !important;
-    font-size: 1.3rem !important;
-}
 
 /* анимации тест */
 
