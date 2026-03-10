@@ -4,41 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nail Meow - Студия маникюра</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">🐱 Nail Meow</div>
             <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="services.html">Услуги</a></li>
-                <li><a href="booking.html">Запись</a></li>
-                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="/" class="active">Главная</a></li>
+                <li><a href="/services">Услуги</a></li>
+                <li><a href="/booking">Запись</a></li>
+                <li><a href="/contacts">Контакты</a></li>
+                <li><a href="/admin" class="btn-admin">🔧 Админ</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-    <section class="hero">
-        <h1>Студия маникюра Nail Meow</h1>
-        <p>Создаем красоту для ваших ногтей</p>
-        <a href="booking.html" class="btn">Записаться онлайн</a>
-    </section>
-    <section id="contacts" class="contacts">
-    <h2>Контакты</h2>
-    <div class="contact-info">
+        <section class="hero">
+            <h1>Студия маникюра Nail Meow</h1>
+            <p>Создаем красоту для ваших ногтей</p>
+            <a href="/booking" class="btn">Записаться онлайн</a>
+        </section>
+
+        <section class="services-preview">
+            <h2>Популярные услуги</h2>
+            <div class="services-grid" id="servicesList">
+                <div class="service-card">
+                    <div class="service-icon">💅</div>
+                    <h3>Наращивание</h3>
+                    <div class="price">1000 ₽</div>
+                    <a href="/booking" class="btn-book">Записаться</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Снятие</h3>
+                    <div class="price">500 ₽</div>
+                    <a href="/booking" class="btn-book">Записаться</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💖</div>
+                    <h3>Покрытие</h3>
+                    <div class="price">800 ₽</div>
+                    <a href="/booking" class="btn-book">Записаться</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>О нас</h2>
+            <div class="about-content">
+                <p>Мы — студия маникюра Nail Meow в Красноярске. Наши мастера создадут идеальный маникюр для вас!</p>
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">⭐</span>
+                        <h4>Опытные мастера</h4>
+                        <p>Стаж от 3 лет</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💎</span>
+                        <h4>Качественные материалы</h4>
+                        <p>Только премиум бренды</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🛡️</span>
+                        <h4>Стерильность</h4>
+                        <p>100% безопасность</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nail Meow. Все права защищены.</p>
         <p>📍 г. Красноярск, ул. Матросова, 20, каб. 101</p>
-        <p>📱 +7 (999) 123-45-67</p>
-        <p>⏰ Ежедневно с 10:00 до 21:00</p>
-    </div>
-    <div class="map">
-        <iframe src="https://yandex.ru/map-widget/v2/?ll=92.882%2C56.015&z=17&pt=92.882,56.015,pm2rdm" width="100%" height="400" frameborder="0"></iframe>
-    </div>
-    </section>
-</main>
-<footer>
-    <p>&copy; 2026 Nail Meow. Все права защищены.</p>
-</footer>
-<script src="static/js/main.js"></script>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
 </body>
 </html>
