@@ -262,6 +262,22 @@ nav a.active {
     transition: var(--transition);
 }
 
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus,
+.admin-form input:focus,
+.admin-form textarea:focus {
+    outline: none;
+    border-color: var(--pink-main);
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+}
+
+.booking-form textarea,
+.admin-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
 
 /* АДАПТАЦИЯ МОБИЛЬНАЯ */
 @media (max-width: 768px) {
