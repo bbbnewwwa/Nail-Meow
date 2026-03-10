@@ -390,6 +390,26 @@ nav a.active {
     gap: 1.5rem;
 }
 
+.feature {
+    text-align: center;
+    padding: 1rem;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature h4 {
+    color: var(--pink-dark);
+    margin-bottom: 0.3rem;
+}
+
+.feature p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
 
 /* FOOTER */
 
