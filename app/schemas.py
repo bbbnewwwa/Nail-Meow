@@ -3,25 +3,15 @@ from typing import Optional, List
 from datetime import datetime
 
 class ServiceBase(BaseModel):
-    name: str = Field(..., min_length=2, max_length=100)
+    name: str
     description: Optional[str] = None
-    price: float = Field(..., gt=0)
-    duration: Optional[int] = Field(None, gt=0)
+    price: float
+    duration: Optional[int] = None
     category: Optional[str] = None
-    image_url: Optional[str] = None
     is_active: bool = True
 
 class ServiceCreate(ServiceBase):
     pass
-
-class ServiceUpdate(BaseModel):
-    name: Optional[str] = None
-    description: Optional[str] = None
-    price: Optional[float] = None
-    duration: Optional[int] = None
-    category: Optional[str] = None
-    image_url: Optional[str] = None
-    is_active: Optional[bool] = None
 
 class ServiceResponse(ServiceBase):
     id: int
@@ -31,15 +21,11 @@ class ServiceResponse(ServiceBase):
         from_attributes = True
 
 class MasterBase(BaseModel):
-    full_name: str = Field(..., min_length=2, max_length=100)
+    full_name: str
     specialization: Optional[str] = None
-    rating: float = Field(default=0.0, ge=0.0, le=5.0)
-    photo_url: Optional[str] = None
+    rating: float = 0.0
     description: Optional[str] = None
     is_active: bool = True
-
-class MasterCreate(MasterBase):
-    pass
 
 class MasterResponse(MasterBase):
     id: int
@@ -48,8 +34,8 @@ class MasterResponse(MasterBase):
         from_attributes = True
 
 class BookingBase(BaseModel):
-    client_name: str = Field(..., min_length=2)
-    client_phone: str = Field(..., min_length=10)
+    client_name: str
+    client_phone: str
     service_id: int
     master_id: Optional[int] = None
     master_name: Optional[str] = None
