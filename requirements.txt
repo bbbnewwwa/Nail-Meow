@@ -10,3 +10,4 @@ python-multipart==0.0.6
 email-validator==2.1.0.post1
 psycopg2-binary==2.9.9
 aiohttp==3.9.1
+aiogram==3.4.1
