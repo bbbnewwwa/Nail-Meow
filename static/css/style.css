@@ -280,6 +280,36 @@ nav a.active {
 
 /* КОНТАКТЫ */
 
+.contacts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-info {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-info h2 {
+    color: var(--pink-dark);
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.3rem;
+}
+
+.contact-info h2:first-child {
+    margin-top: 0;
+}
+
+.contact-info p {
+    color: var(--text-light);
+}
+
 /* АДМИН ПАНЕЛЬ */
 
 /* О НАС */
