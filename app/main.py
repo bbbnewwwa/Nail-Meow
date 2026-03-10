@@ -13,7 +13,7 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"],    
 )
 
 app.include_router(services.router, prefix=f"{settings.API_V1_STR}/services", tags=["Services"])
