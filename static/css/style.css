@@ -413,6 +413,16 @@ nav a.active {
 
 /* FOOTER */
 
+footer {
+    background: var(--white);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(255, 105, 180, 0.1);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
 /* АДАПТАЦИЯ МОБИЛЬНАЯ */
 @media (max-width: 768px) {
     nav {
