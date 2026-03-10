@@ -47,5 +47,8 @@ def create_booking(db: Session, booking: schemas.BookingCreate):
     db.refresh(db_booking)
     return db_booking
 
+def get_booking(db: Session, booking_id: int):
+    return db.query(models.Booking).filter(models.Booking.id == booking_id).first()
+
 def get_bookings(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Booking).order_by(models.Booking.appointment_date.desc()).offset(skip).limit(limit).all()
