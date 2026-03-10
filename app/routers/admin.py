@@ -9,6 +9,6 @@ router = APIRouter()
 async def get_stats(db: Session = Depends(get_db)):
     return {
         "services": db.query(models.Service).count(),
-        "masters": db.query(models.Master).count(),
-        "bookings": db.query(models.Booking).count()
+        "bookings": db.query(models.Booking).count(),
+        "users": db.query(models.User).count()
     }
