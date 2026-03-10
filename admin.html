@@ -22,6 +22,31 @@
             <h2>Управление услугами</h2>
             <div id="servicesAdmin" class="admin-grid"></div>
         </section>
+        <section class="admin-section">
+            <h2>Добавить услугу</h2>
+            <form id="addServiceForm" class="admin-form">
+                <label>
+                    Название:
+                    <input type="text" id="serviceName" required>
+                </label>
+                <label>
+                    Цена (₽):
+                    <input type="number" id="servicePrice" required>
+                </label>
+                <label>
+                    Длительность (мин):
+                    <input type="number" id="serviceDuration">
+                </label>
+                <label>
+                    Категория:
+                    <input type="text" id="serviceCategory">
+                </label>
+                <label>
+                    Описание:
+                    <textarea id="serviceDescription"></textarea>
+                </label>
+                <button type="submit" class="btn-admin">Добавить</button>
+            </form>
     </main>
 </body>
 </html>
