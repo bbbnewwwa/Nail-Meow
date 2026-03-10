@@ -423,24 +423,37 @@ footer {
     font-size: 0.9rem;
 }
 
-/* АДАПТАЦИЯ МОБИЛЬНАЯ */
+/* АДАПТАЦИЯ  МОБИЛЬНАЯ */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
-        gap: 15px;
+        gap: 1rem;
+        padding: 1rem;
     }
     
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0.5rem;
     }
     
-    .services-grid {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .services-grid,
+    .stats-grid {
         grid-template-columns: 1fr;
-        padding: 10px;
+        padding: 0 1rem 1rem;
     }
     
-    .service-card {
-        padding: 15px;
+    .booking-form,
+    .admin-form {
+        padding: 1.5rem;
+        margin: 0 1rem 2rem;
+    }
+    
+    .contacts-container {
+        padding: 0 1rem 2rem;
     }
 }
