@@ -108,7 +108,7 @@ nav a.active {
     margin-bottom: 2rem;
 }
 
-/* ===== TELEGRAM БЛОК - РОЗОВЫЙ СТИЛЬ ===== */
+/* ===== TELEGRAM БЛОК ===== */
 .booking-container {
     display: flex;
     flex-direction: column;
@@ -116,58 +116,47 @@ nav a.active {
 }
 
 .booking-info {
-    background: linear-gradient(135deg, #ffe4ec, #fff5f7);
-    border: 2px solid #ffb6c1;
-    border-radius: 16px;
-    padding: 40px 30px;
+    background: linear-gradient(135deg, var(--pink-light), var(--white));
+    border: 2px solid var(--pink-soft);
+    border-radius: var(--radius);
+    padding: 2rem;
     text-align: center;
-    margin: 30px auto;
+    margin: 2rem auto;
     max-width: 600px;
     width: 90%;
-    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.15);
+    box-shadow: var(--shadow);
 }
 
 .booking-info h3 {
-    color: #c71585;
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-weight: 600;
+    color: var(--pink-dark);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
 }
 
 .booking-info p {
-    color: #666;
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 15px;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
 }
 
 .booking-info .btn-telegram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: linear-gradient(135deg, #ff69b4, #ff1493);
-    color: white;
-    padding: 16px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
-    transition: all 0.3s ease;
+    display: inline-block;
+    background: var(--pink-main);
+    color: var(--white);
+    padding: 0.8rem 2rem;
     border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: var(--transition);
+    margin: 0 auto;
 }
 
 .booking-info .btn-telegram:hover {
-    background: linear-gradient(135deg, #ff1493, #c71585);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
-}
-
-.booking-info .btn-telegram::before {
-    font-size: 20px;
+    background: var(--pink-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Пульсация */
