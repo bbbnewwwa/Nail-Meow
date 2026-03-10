@@ -310,6 +310,23 @@ nav a.active {
     color: var(--text-light);
 }
 
+.map {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.map h2 {
+    color: var(--pink-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.map iframe {
+    border-radius: var(--radius-sm);
+}
+
 /* АДМИН ПАНЕЛЬ */
 
 /* О НАС */
