@@ -1,0 +1,17 @@
+/* цвета */
+:root {
+    --pink-bg: #fff5f7;
+    --pink-light: #ffe4ec;
+    --pink-soft: #ffb6c1;
+    --pink-main: #ff69b4;
+    --pink-hover: #ff1493;
+    --pink-dark: #c71585;
+    --white: #ffffff;
+    --text-main: #333;
+    --text-light: #666;
+    --shadow: 0 4px 20px rgba(255, 105, 180, 0.15);
+    --shadow-hover: 0 8px 25px rgba(255, 105, 180, 0.25);
+    --radius: 16px;
+    --radius-sm: 8px;
+    --transition: all 0.3s ease;
+}
