@@ -32,7 +32,7 @@ async def contacts_callback(callback: CallbackQuery):
         "Email:\n"
         "info@nailmeow.ru\n\n"
         "Сайт:\n"
-        "http://127.0.0.1:3000\n\n"
+        "http://127.0.0.1:8000\n\n"
         "Режим работы:\n"
         "Пн-Вс: 10:00 - 21:00"
     )
