@@ -49,7 +49,11 @@ nav a {
 }
 
 nav a:hover {
-    background: rgba(255, 255, 255, 0.2); /* ИЗМЕНЕНИЕ: Добавлен стиль при наведении */
+    background: rgba(255, 255, 255, 0.2); 
+}
+
+nav a.active {
+    background: rgba(255, 255, 255, 0.3); 
 }
 
 .hero {
