@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from app.database import SessionLocal, engine, Base
-from app.models import Service, User
+from app.models import Service
 
 # Создаём таблицы
 Base.metadata.create_all(bind=engine)
@@ -67,3 +67,10 @@ try:
     print("\n📋 Добавленные услуги:")
     for service in services:
         print(f"  - {service.name}: {service.price} ₽ ({service.duration} мин)")
+    
+except Exception as e:
+    print(f"❌ Ошибка: {e}")
+    db.rollback()
+
+finally:
+    db.close()
