@@ -508,14 +508,15 @@ footer {
 }
 
 .btn-telegram:hover {
-    background: linear-gradient(135deg, #0099ff, #0088cc);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+    background: linear-gradient(135deg, #0099ff, #0088cc) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4) !important;
 }
 
+
 .btn-telegram::before {
-    content: "📱";
-    font-size: 1.3rem;
+    content: "📱" !important;
+    font-size: 1.3rem !important;
 }
 
 /* анимации тест */
