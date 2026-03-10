@@ -229,6 +229,40 @@ nav a.active {
     color: var(--text-light);
 }
 
+/* формы */
+.booking-form,
+.admin-form {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.booking-form label,
+.admin-form label {
+    display: block;
+    margin-bottom: 1.2rem;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea,
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 2px solid var(--pink-light);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+
 /* АДАПТАЦИЯ МОБИЛЬНАЯ */
 @media (max-width: 768px) {
     nav {
