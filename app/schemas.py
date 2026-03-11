@@ -57,7 +57,6 @@ class BookingBase(BaseModel):
     appointment_date: str  # ← строка для простоты
     status: str = "pending"
     comment: Optional[str] = None
-    master_name: Optional[str] = None
 
 class BookingCreate(BookingBase):
     pass
