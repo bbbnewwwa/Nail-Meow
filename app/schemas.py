@@ -30,6 +30,24 @@ class ServiceResponse(ServiceBase):
     class Config:
         from_attributes = True
 
+# ========== ПОЛЬЗОВАТЕЛИ ==========
+
+class UserBase(BaseModel):
+    email: str = Field(..., min_length=5, max_length=100)
+    full_name: Optional[str] = None
+    phone: Optional[str] = None
+    role: str = "client"
+
+class UserCreate(UserBase):
+    password: str = Field(..., min_length=6)
+
+class UserResponse(UserBase):
+    id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True
+
 # ========== ЗАПИСИ ==========
 
 class BookingBase(BaseModel):
@@ -40,7 +58,6 @@ class BookingBase(BaseModel):
     status: str = "pending"
     comment: Optional[str] = None
     master_name: Optional[str] = None
-    # ❌ master_id УДАЛЁН — нет такого поля в модели
 
 class BookingCreate(BookingBase):
     pass
