@@ -1,6 +1,5 @@
 const API_URL = 'http://127.0.0.1:8000/api';
 
-// Запуск при загрузке страницы
 document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ Админ-панель загружена');
     loadStats();
@@ -8,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     loadServicesForEdit();
 });
 
+// ========== СТАТИСТИКА ==========
 async function loadStats() {
     try {
         const response = await fetch(`${API_URL}/admin/stats`);
         const stats = await response.json();
-        
         document.getElementById('servicesCount').textContent = stats.services || 0;
         document.getElementById('bookingsCount').textContent = stats.bookings || 0;
         document.getElementById('usersCount').textContent = stats.users || 0;
@@ -21,12 +20,14 @@ async function loadStats() {
     }
 }
 
+// ========== СПИСОК УСЛУГ ==========
 async function loadServicesList() {
     try {
         const response = await fetch(`${API_URL}/services/`);
         const services = await response.json();
-        
         const container = document.getElementById('servicesAdmin');
+        
+        if (!container) return;
         
         if (services.length === 0) {
             container.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Услуг пока нет. Добавьте первую услугу!</p>';
@@ -35,10 +36,10 @@ async function loadServicesList() {
         
         container.innerHTML = services.map(service => `
             <div class="admin-card">
-                <h3>${service.name}</h3>
+                <h3>${escapeHtml(service.name)}</h3>
                 <p>💰 ${service.price} ₽</p>
                 <p>⏱ ${service.duration || 60} мин</p>
-                <p>📁 ${service.category || 'Общее'}</p>
+                <p>📁 ${escapeHtml(service.category || 'Общее')}</p>
                 <div class="admin-actions">
                     <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn-edit">✏️ Цена</button>
                     <button onclick="deleteService(${service.id})" class="btn-delete">🗑️ Удалить</button>
@@ -47,11 +48,12 @@ async function loadServicesList() {
         `).join('');
     } catch (error) {
         console.error('Ошибка загрузки:', error);
-        document.getElementById('servicesAdmin').innerHTML = 
-            '<p class="error">Не удалось загрузить услуги.</p>';
+        const container = document.getElementById('servicesAdmin');
+        if (container) container.innerHTML = '<p class="error">Не удалось загрузить услуги.</p>';
     }
 }
 
+// ========== БЫСТРОЕ ИЗМЕНЕНИЕ ЦЕНЫ ==========
 async function quickEditPrice(id, currentPrice) {
     const newPrice = prompt(`Новая цена:`, currentPrice);
     if (newPrice && !isNaN(newPrice)) {
@@ -61,11 +63,11 @@ async function quickEditPrice(id, currentPrice) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ price: parseFloat(newPrice) })
             });
-            
             if (response.ok) {
                 alert('✅ Цена обновлена!');
                 loadServicesList();
                 loadStats();
+                loadServicesForEdit();
             } else {
                 alert('❌ Ошибка при обновлении');
             }
@@ -75,17 +77,16 @@ async function quickEditPrice(id, currentPrice) {
     }
 }
 
+// ========== УДАЛЕНИЕ УСЛУГИ ==========
 async function deleteService(id) {
     if (confirm('Удалить услугу?')) {
         try {
-            const response = await fetch(`${API_URL}/services/${id}`, {
-                method: 'DELETE'
-            });
-            
+            const response = await fetch(`${API_URL}/services/${id}`, { method: 'DELETE' });
             if (response.ok) {
                 alert('✅ Услуга удалена!');
                 loadServicesList();
                 loadStats();
+                loadServicesForEdit();
             } else {
                 alert('❌ Ошибка при удалении');
             }
@@ -95,16 +96,15 @@ async function deleteService(id) {
     }
 }
 
+// ========== ЗАГРУЗКА СПИСКА ДЛЯ РЕДАКТИРОВАНИЯ ==========
 async function loadServicesForEdit() {
     try {
         const response = await fetch(`${API_URL}/services/`);
         const services = await response.json();
-        
         const select = document.getElementById('editServiceSelect');
         if (!select) return;
         
         select.innerHTML = '<option value="">-- Выберите услугу --</option>';
-        
         services.forEach(service => {
             const option = document.createElement('option');
             option.value = service.id;
@@ -112,34 +112,34 @@ async function loadServicesForEdit() {
             select.appendChild(option);
         });
         
-        select.addEventListener('change', function() {
+        select.onchange = function() {
             const selectedService = services.find(s => s.id == this.value);
             if (selectedService) {
                 showEditForm(selectedService);
             } else {
                 hideEditForm();
             }
-        });
+        };
     } catch (error) {
         console.error('Ошибка загрузки услуг:', error);
     }
 }
 
+// ========== ПОКАЗАТЬ/СКРЫТЬ ФОРМУ РЕДАКТИРОВАНИЯ ==========
 function showEditForm(service) {
     const form = document.getElementById('editServiceForm');
     if (!form) return;
     
+    document.getElementById('editServiceId').value = service.id;
     document.getElementById('editServiceName').value = service.name;
     document.getElementById('editServicePrice').value = service.price;
     document.getElementById('editServiceDuration').value = service.duration || '';
     document.getElementById('editServiceCategory').value = service.category || '';
     document.getElementById('editServiceDescription').value = service.description || '';
     
-    form.dataset.serviceId = service.id;
     form.style.display = 'grid';
 }
 
-// ========== СКРЫТЬ ФОРМУ ==========
 function hideEditForm() {
     const form = document.getElementById('editServiceForm');
     if (form) {
@@ -153,9 +153,13 @@ function cancelEdit() {
     hideEditForm();
 }
 
+// ========== ОБНОВЛЕНИЕ УСЛУГИ ==========
 async function updateService() {
-    const form = document.getElementById('editServiceForm');
-    const serviceId = form.dataset.serviceId;
+    const serviceId = document.getElementById('editServiceId').value;
+    if (!serviceId) {
+        alert('❌ Выберите услугу для редактирования');
+        return;
+    }
     
     const updatedData = {
         name: document.getElementById('editServiceName').value.trim(),
@@ -191,6 +195,7 @@ async function updateService() {
     }
 }
 
+// ========== ДОБАВЛЕНИЕ УСЛУГИ ==========
 const addServiceForm = document.getElementById('addServiceForm');
 if (addServiceForm) {
     addServiceForm.addEventListener('submit', async (e) => {
@@ -220,8 +225,8 @@ if (addServiceForm) {
             if (response.ok) {
                 alert('✅ Услуга добавлена!');
                 addServiceForm.reset();
-                loadServicesList();
                 loadStats();
+                loadServicesList();
                 loadServicesForEdit();
             } else {
                 alert('❌ Ошибка при добавлении');
@@ -230,4 +235,11 @@ if (addServiceForm) {
             alert('Ошибка: ' + error.message);
         }
     });
+}
+
+// ========== ЗАЩИТА ОТ XSS ==========
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
