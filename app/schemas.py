@@ -3,32 +3,27 @@ from typing import Optional, List
 from datetime import datetime
 
 class ServiceBase(BaseModel):
-    name: str
+    name: str = Field(..., min_length=2, max_length=100)
     description: Optional[str] = None
-    price: float
-    duration: Optional[int] = None
+    price: float = Field(..., gt=0)
+    duration: Optional[int] = Field(None, gt=0)
     category: Optional[str] = None
     is_active: bool = True
 
 class ServiceCreate(ServiceBase):
     pass
 
+class ServiceUpdate(BaseModel):
+    name: Optional[str] = Field(None, min_length=2, max_length=100)
+    description: Optional[str] = None
+    price: Optional[float] = Field(None, gt=0)
+    duration: Optional[int] = Field(None, gt=0)
+    category: Optional[str] = None
+    is_active: Optional[bool] = None
+
 class ServiceResponse(ServiceBase):
     id: int
     created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-class MasterBase(BaseModel):
-    full_name: str
-    specialization: Optional[str] = None
-    rating: float = 0.0
-    description: Optional[str] = None
-    is_active: bool = True
-
-class MasterResponse(MasterBase):
-    id: int
     
     class Config:
         from_attributes = True
