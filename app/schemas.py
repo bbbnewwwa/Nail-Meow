@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
 
@@ -30,60 +30,25 @@ class ServiceResponse(ServiceBase):
     class Config:
         from_attributes = True
 
-# ========== ПОЛЬЗОВАТЕЛИ ==========
-
-class UserBase(BaseModel):
-    email: EmailStr
-    full_name: Optional[str] = None
-    phone: Optional[str] = None
-    role: Optional[str] = "client"
-
-class UserCreate(UserBase):
-    password: str = Field(..., min_length=6)
-
-class UserUpdate(BaseModel):
-    email: Optional[EmailStr] = None
-    full_name: Optional[str] = None
-    phone: Optional[str] = None
-    role: Optional[str] = None
-    password: Optional[str] = Field(None, min_length=6)
-
-class UserResponse(UserBase):
-    id: int
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
 # ========== ЗАПИСИ ==========
 
 class BookingBase(BaseModel):
     client_name: str
     client_phone: str
     service_id: int
-    master_id: Optional[int] = None
-    master_name: Optional[str] = None
-    appointment_date: datetime
+    appointment_date: str  # ← строка для простоты
     status: str = "pending"
     comment: Optional[str] = None
+    master_name: Optional[str] = None
+    # ❌ master_id УДАЛЁН — нет такого поля в модели
 
 class BookingCreate(BookingBase):
     pass
 
-class BookingUpdate(BaseModel):
-    client_name: Optional[str] = None
-    client_phone: Optional[str] = None
-    service_id: Optional[int] = None
-    master_id: Optional[int] = None
-    master_name: Optional[str] = None
-    appointment_date: Optional[datetime] = None
-    status: Optional[str] = None
-    comment: Optional[str] = None
-
 class BookingResponse(BookingBase):
     id: int
     client_id: Optional[int] = None
-    created_at: datetime
+    created_at: str
     
     class Config:
         from_attributes = True
