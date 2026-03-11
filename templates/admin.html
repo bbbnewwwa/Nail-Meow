@@ -17,9 +17,11 @@
         </nav>
     </header>
     <main class="admin-container">
-        <h1>Админ-панель</h1>
+        <h1>🛠️ Админ-панель</h1>
+        
+        <!-- СТАТИСТИКА -->
         <section class="admin-section">
-            <h2>Статистика</h2>
+            <h2>📊 Статистика</h2>
             <div class="stats-grid" id="statsList">
                 <div class="stat-card">
                     <span class="stat-icon">💅</span>
@@ -31,33 +33,90 @@
                     <div class="stat-value" id="bookingsCount">0</div>
                     <div class="stat-label">Записей</div>
                 </div>
+                <div class="stat-card">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-value" id="usersCount">0</div>
+                    <div class="stat-label">Клиентов</div>
+                </div>
             </div>
         </section>
         <section class="admin-section">
-            <h2>Добавить услугу</h2>
+            <h2>💅 Управление услугами</h2>
+            <div id="servicesAdmin" class="admin-grid">
+                <p style="text-align: center; color: #666; padding: 2rem;">Загрузка услуг...</p>
+            </div>
+        </section>
+        <section class="admin-section">
+            <h2>➕ Добавить услугу</h2>
             <form id="addServiceForm" class="admin-form">
-                <label>
-                    Название:
-                    <input type="text" id="serviceName" required>
-                </label>
-                <label>
-                    Цена (₽):
-                    <input type="number" id="servicePrice" required>
-                </label>
-                <label>
-                    Длительность (мин):
-                    <input type="number" id="serviceDuration">
-                </label>
-                <label>
-                    Категория:
-                    <input type="text" id="serviceCategory">
-                </label>
-                <label>
-                    Описание:
-                    <textarea id="serviceDescription"></textarea>
-                </label>
-                <button type="submit" class="btn-admin">Добавить</button>
+                <div class="form-group">
+                    <label for="serviceName">Название услуги *</label>
+                    <input type="text" id="serviceName" required placeholder="Например: Наращивание ногтей">
+                </div>
+                
+                <div class="form-group">
+                    <label for="servicePrice">Цена (₽) *</label>
+                    <input type="number" id="servicePrice" required placeholder="1000" min="0" step="0.01">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceDuration">Длительность (мин)</label>
+                    <input type="number" id="serviceDuration" placeholder="60" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceCategory">Категория</label>
+                    <input type="text" id="serviceCategory" placeholder="Маникюр">
+                </div>
+                
+                <div class="form-group">
+                    <label for="serviceDescription">Описание</label>
+                    <textarea id="serviceDescription" rows="3" placeholder="Описание услуги..."></textarea>
+                </div>
+                <button type="submit" class="btn-admin-submit">➕ Добавить услугу</button>
             </form>
+        </section>
+        <section class="admin-section">
+            <h2>✏️ Изменить услугу</h2>
+            
+            <div class="form-group">
+                <label for="editServiceSelect">Выберите услугу:</label>
+                <select id="editServiceSelect" class="form-control">
+                    <option value="">-- Выберите услугу --</option>
+                </select>
+            </div>
+
+            <div id="editServiceForm" class="admin-form" style="display: none;">
+                <div class="form-group">
+                    <label for="editServiceName">Название:</label>
+                    <input type="text" id="editServiceName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editServicePrice">Цена (₽):</label>
+                    <input type="number" id="editServicePrice" class="form-control" required min="0" step="0.01">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editServiceDuration">Длительность (мин):</label>
+                    <input type="number" id="editServiceDuration" class="form-control" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="editServiceCategory">Категория:</label>
+                    <input type="text" id="editServiceCategory" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editServiceDescription">Описание:</label>
+                    <textarea id="editServiceDescription" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" onclick="updateService()" class="btn btn-primary">💾 Сохранить изменения</button>
+                    <button type="button" onclick="cancelEdit()" class="btn btn-secondary">❌ Отмена</button>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <p>&copy; 2026 Nail Meow Admin Panel</p>
