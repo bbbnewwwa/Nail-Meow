@@ -54,7 +54,7 @@ class BookingBase(BaseModel):
     client_name: str
     client_phone: str
     service_id: int
-    appointment_date: str  # ← строка для простоты
+    appointment_date: str  # ← Для ЗАПРОСА оставляем str
     status: str = "pending"
     comment: Optional[str] = None
 
@@ -64,7 +64,8 @@ class BookingCreate(BookingBase):
 class BookingResponse(BookingBase):
     id: int
     client_id: Optional[int] = None
-    created_at: str
+    appointment_date: datetime  
+    created_at: datetime        
     
     class Config:
         from_attributes = True
