@@ -3,6 +3,8 @@ from typing import List, Optional
 from app import models, schemas
 from passlib.context import CryptContext
 
+# ========== УСЛУГИ (SERVICE) ==========
+
 def get_service(db: Session, service_id: int):
     """Получить услугу по ID"""
     return db.query(models.Service).filter(models.Service.id == service_id).first()
@@ -48,6 +50,8 @@ def get_services_count(db: Session):
     """Получить количество услуг"""
     return db.query(models.Service).count()
 
+# ========== ПОЛЬЗОВАТЕЛИ (USER) ==========
+
 def get_user(db: Session, user_id: int):
     """Получить пользователя по ID"""
     return db.query(models.User).filter(models.User.id == user_id).first()
@@ -80,6 +84,8 @@ def get_users_count(db: Session):
     """Получить количество пользователей"""
     return db.query(models.User).count()
 
+# ========== ЗАПИСИ (BOOKING) ==========
+
 def get_booking(db: Session, booking_id: int):
     """Получить запись по ID"""
     return db.query(models.Booking).filter(models.Booking.id == booking_id).first()
@@ -93,11 +99,34 @@ def get_bookings(db: Session, skip: int = 0, limit: int = 100, status: Optional[
 
 def create_booking(db: Session, booking: schemas.BookingCreate):
     """Создать новую запись"""
-    db_booking = models.Booking(**booking.dict())
-    db.add(db_booking)
-    db.commit()
-    db.refresh(db_booking)
-    return db_booking
+    try:
+        print(f"📝 Создание записи: {booking.dict()}")
+        
+        # Конвертируем строку даты в datetime для БД
+        from datetime import datetime
+        appointment_date = datetime.fromisoformat(booking.appointment_date)
+        
+        # Создаём запись ТОЛЬКО с теми полями, которые есть в модели
+        db_booking = models.Booking(
+            client_name=booking.client_name,
+            client_phone=booking.client_phone,
+            service_id=booking.service_id,
+            appointment_date=appointment_date,
+            status=booking.status or "pending",
+            comment=booking.comment,
+            master_name=booking.master_name
+        )
+        
+        db.add(db_booking)
+        db.commit()
+        db.refresh(db_booking)
+        print(f"✅ Запись создана: {db_booking.id}")
+        return db_booking
+        
+    except Exception as e:
+        print(f"❌ Ошибка при создании записи: {e}")
+        db.rollback()
+        raise
 
 def update_booking(db: Session, booking_id: int, booking_update: dict):
     """Обновить запись"""
@@ -126,6 +155,8 @@ def get_bookings_by_date(db: Session, date: str):
     return db.query(models.Booking).filter(
         models.Booking.appointment_date >= date
     ).all()
+
+# ========== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ==========
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
