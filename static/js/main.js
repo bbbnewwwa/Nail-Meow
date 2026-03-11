@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('✅ Форма найдена, добавляем обработчик...');
         
         bookingForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // ← ОЧЕНЬ ВАЖНО!
+            e.preventDefault(); 
             
             console.log('📝 Отправка формы...');
             
