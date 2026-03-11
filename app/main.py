@@ -15,7 +15,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 🔥 ПОДКЛЮЧАЕМ СТАТИКУ И ШАБЛОНЫ 🔥
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
@@ -24,7 +23,6 @@ app.include_router(services.router, prefix=f"{settings.API_V1_STR}/services", ta
 app.include_router(bookings.router, prefix=f"{settings.API_V1_STR}/bookings", tags=["Bookings"])
 app.include_router(admin.router, prefix=f"{settings.API_V1_STR}/admin", tags=["Admin"])
 
-# 🌐 СТРАНИЦЫ САЙТА (через Jinja2) 🌐
 @app.get("/")
 async def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
