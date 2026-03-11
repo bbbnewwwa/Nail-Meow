@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - Nail Meow</title>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <header>
@@ -19,11 +19,30 @@
             </ul>
         </nav>
     </header>
+    
     <section class="page-header">
         <h1>Контакты</h1>
         <p>Свяжитесь с нами</p>
     </section>
+    
+    <!-- 🔥 БЛОКИ ИДУТ ДРУГ ПОД ДРУГОМ: СНАЧАЛА КАРТА, ПОТОМ КОНТАКТЫ -->
     <section class="contacts-container">
+        
+        <!-- КАРТА (будет сверху) -->
+        <div class="map">
+            <h2>🗺️ Мы на карте</h2>
+            <iframe 
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ac8720073bd0d55a3b0e548ff8c9f3fa5da9209c545ab7d58cb997e3b6760fbdf&amp;source=constructor" 
+                width="100%" 
+                height="600" 
+                frameborder="0" 
+                allowfullscreen="true"
+                loading="lazy"
+                style="display: block; border-radius: var(--radius-sm);">
+            </iframe>
+        </div>
+        
+        <!-- КОНТАКТЫ (будут снизу) -->
         <div class="contact-info">
             <h2>📍 Наш адрес</h2>
             <p>г. Красноярск, ул. Матросова, 20, каб. 101</p>
@@ -37,15 +56,13 @@
             <h2>⏰ Режим работы</h2>
             <p>Ежедневно с 10:00 до 21:00</p>
         </div>
-        <div class="map">
-            <h2>🗺️ Мы на карте</h2>
-            <iframe src="https://yandex.ru/map-widget/v2/?ll=92.882%2C56.015&z=17&pt=92.882,56.015,pm2rdm" width="100%" height="450" frameborder="0"></iframe>
-        </div>
+        
     </section>
+    
     <footer>
         <p>&copy; 2026 Nail Meow. Все права защищены.</p>
         <p>📍 г. Красноярск, ул. Матросова, 20, каб. 101</p>
     </footer>
-    <script src="static/js/main.js"></script>
+    <script src="/static/js/main.js"></script>
 </body>
 </html>

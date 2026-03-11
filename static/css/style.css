@@ -89,7 +89,7 @@ nav a.active {
     transform: translateY(-2px);
 }
 
-/* секция  hero */
+/* секция hero */
 .hero {
     text-align: center;
     padding: 4rem 2rem;
@@ -107,6 +107,68 @@ nav a.active {
     color: var(--text-light);
     margin-bottom: 2rem;
 }
+
+/* 🔥 КОНТАКТЫ - ИСПРАВЛЕНО: БЛОКИ ДРУГ ПОД ДРУГОМ 🔥 */
+
+.contacts-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 1rem 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: stretch !important;
+}
+
+.contact-info {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.contact-info h2 {
+    color: var(--pink-dark);
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1.3rem;
+}
+
+.contact-info h2:first-child {
+    margin-top: 0;
+}
+
+.contact-info p {
+    color: var(--text-light);
+}
+
+.map {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.map h2 {
+    color: var(--pink-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.map iframe {
+    width: 100% !important;
+    height: 600px !important;
+    border: 0 !important;
+    border-radius: var(--radius-sm);
+    display: block !important;
+}
+
 
 /* ===== TELEGRAM БЛОК ===== */
 .booking-container {
@@ -159,14 +221,9 @@ nav a.active {
     box-shadow: var(--shadow-hover);
 }
 
-/* Пульсация */
 @keyframes telegramPulse {
-    0%, 100% { 
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3); 
-    }
-    50% { 
-        box-shadow: 0 4px 25px rgba(255, 105, 180, 0.5); 
-    }
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3); }
+    50% { box-shadow: 0 4px 25px rgba(255, 105, 180, 0.5); }
 }
 
 .booking-info .btn-telegram {
@@ -346,54 +403,7 @@ nav a.active {
     resize: vertical;
 }
 
-/* КОНТАКТЫ */
 
-.contacts-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.contact-info {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-.contact-info h2 {
-    color: var(--pink-dark);
-    margin: 1.5rem 0 0.5rem;
-    font-size: 1.3rem;
-}
-
-.contact-info h2:first-child {
-    margin-top: 0;
-}
-
-.contact-info p {
-    color: var(--text-light);
-}
-
-.map {
-    background: var(--white);
-    padding: 1rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-.map h2 {
-    color: var(--pink-dark);
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-}
-
-.map iframe {
-    border-radius: var(--radius-sm);
-}
 
 /* АДМИН ПАНЕЛЬ */
 
@@ -478,7 +488,6 @@ nav a.active {
     font-size: 0.9rem;
 }
 
-
 /* FOOTER */
 
 footer {
@@ -491,7 +500,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* АДАПТАЦИЯ  МОБИЛЬНАЯ */
+/* АДАПТАЦИЯ МОБИЛЬНАЯ */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -524,9 +533,9 @@ footer {
     .contacts-container {
         padding: 0 1rem 2rem;
     }
+}
 
 /* анимации тест */
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -540,4 +549,3 @@ footer {
 
 .service-card:nth-child(2) { animation-delay: 0.1s; }
 .service-card:nth-child(3) { animation-delay: 0.2s; }
-
