@@ -106,15 +106,15 @@ def create_booking(db: Session, booking: schemas.BookingCreate):
         from datetime import datetime
         appointment_date = datetime.fromisoformat(booking.appointment_date)
         
-        # Создаём запись ТОЛЬКО с теми полями, которые есть в модели
+        # Создаём запись ТОЛЬКО с теми полями, которые есть в модели БД
         db_booking = models.Booking(
             client_name=booking.client_name,
             client_phone=booking.client_phone,
             service_id=booking.service_id,
             appointment_date=appointment_date,
             status=booking.status or "pending",
-            comment=booking.comment,
-            master_name=booking.master_name
+            comment=booking.comment
+            # ❌ master_name НЕ добавляем — нет такой колонки в БД!
         )
         
         db.add(db_booking)
