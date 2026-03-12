@@ -9,7 +9,6 @@
 <body>
     <header>
         <nav>
-            <div class="logo">🐱 Nail Meow</div>
             <ul>
                 <li><a href="/" class="active">Главная</a></li>
                 <li><a href="/services">Услуги</a></li>
@@ -21,7 +20,7 @@
 
     <main>
         <section class="hero">
-            <div class="hero-image"style="max-width: 500px; margin: 0 auto;">
+            <div class="hero-image"style="max-width: 800px; margin: 0 auto;">
                 <img src="{{ url_for('static', path='/images/hero-banner.jpg') }}" alt="Nail Meow Studio">
             </div>
             <a href="/booking" class="btn">Записаться онлайн</a>
@@ -31,19 +30,19 @@
             <h2>Популярные услуги</h2>
             <div class="services-grid" id="servicesList">
                 <div class="service-card">
-                    <div class="service-icon">💅</div>
+                    <img src="{{ url_for('static', path='/images/nogti.jpg') }}" alt="Наращивание" class="service-icon-img">
                     <h3>Наращивание</h3>
                     <div class="price">1000 ₽</div>
                     <a href="/booking" class="btn-book">Записаться</a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">✨</div>
+                    <img src="{{ url_for('static', path='/images/pilochka.jpg') }}" alt="Снятие" class="service-icon-img">
                     <h3>Снятие</h3>
                     <div class="price">500 ₽</div>
                     <a href="/booking" class="btn-book">Записаться</a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💖</div>
+                    <img src="{{ url_for('static', path='/images/lak.jpg') }}" alt="Покрытие" class="service-icon-img">
                     <h3>Покрытие</h3>
                     <div class="price">800 ₽</div>
                     <a href="/booking" class="btn-book">Записаться</a>
