@@ -2,6 +2,9 @@
    NAIL MEOW - ЕДИНЫЙ СТИЛЬ
    ========================================= */
 
+.hero-image {
+    max-width: 400px;
+
 /* 1. ПЕРЕМЕННЫЕ */
 :root {
     /* Цвета */
@@ -116,69 +119,7 @@ nav a.active:hover {
 .hero-image {
     max-width: 600px;
 
-/* 4. HERO & PAGE HEADER */
-.hero {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, var(--pink-light), var(--white));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    min-height: auto;
-}
 
-.hero-image {
-    max-width: 600px;  /* ✅ Уменьшила с 900px до 600px */
-    width: 90%;
-    margin: 0 auto;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    display: block;
-}
-
-.hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    border-radius: var(--radius);
-}
-
-.hero .btn {
-    margin-top: 1rem;
-}
-
-.page-header {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: var(--white);
-    margin-bottom: 2rem;
-}
-
-.page-header h1 {
-    color: var(--pink-dark);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.page-header p {
-    color: var(--text-light);
-}
-
-/* Адаптив */
-@media (max-width: 768px) {
-    .hero {
-        padding: 2rem 1rem;
-    }
-    
-    .hero-image {
-        max-width: 400px;  /* ✅ На мобильных ещё меньше */
-        width: 95%;
-    }
-}
 
 /* 5. КНОПКИ (универсальные) */
 .btn,
