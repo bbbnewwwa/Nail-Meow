@@ -35,14 +35,16 @@ async function loadServicesList() {
         }
         
         container.innerHTML = services.map(service => `
-            <div class="admin-card">
+            <div class="service-card">
+                <div class="service-icon">💅</div>
                 <h3>${escapeHtml(service.name)}</h3>
-                <p>💰 ${service.price} ₽</p>
-                <p>⏱ ${service.duration || 60} мин</p>
-                <p>📁 ${escapeHtml(service.category || 'Общее')}</p>
-                <div class="admin-actions">
-                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn-edit">✏️ Цена</button>
-                    <button onclick="deleteService(${service.id})" class="btn-delete">🗑️ Удалить</button>
+                <div class="price">${service.price} ₽</div>
+                <p class="description">
+                    ${escapeHtml(service.category || 'Общее')} • ${service.duration || 60} мин
+                </p>
+                <div class="admin-grid .service-actions">
+                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn btn-secondary">✏️ Цена</button>
+                    <button onclick="deleteService(${service.id})" class="btn btn-secondary" style="background: #dc3545;">🗑️</button>
                 </div>
             </div>
         `).join('');
