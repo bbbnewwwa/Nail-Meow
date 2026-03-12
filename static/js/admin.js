@@ -79,20 +79,50 @@ async function quickEditPrice(id, currentPrice) {
 
 // ========== УДАЛЕНИЕ УСЛУГИ ==========
 async function deleteService(id) {
-    if (confirm('Удалить услугу?')) {
-        try {
-            const response = await fetch(`${API_URL}/services/${id}`, { method: 'DELETE' });
-            if (response.ok) {
-                alert('✅ Услуга удалена!');
-                loadServicesList();
-                loadStats();
-                loadServicesForEdit();
-            } else {
-                alert('❌ Ошибка при удалении');
+    // 🔎 Проверка: точно ли есть ID
+    if (!id) {
+        console.error('❌ ID услуги не передан');
+        alert('Ошибка: не удалось определить услугу для удаления');
+        return;
+    }
+    
+    if (!confirm('Удалить услугу? Это действие нельзя отменить.')) {
+        return;
+    }
+    
+    try {
+        console.log(`🗑️ Отправка DELETE /services/${id}`);
+        
+        const response = await fetch(`${API_URL}/services/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                // 🔐 Если бэкенд требует авторизацию — раскомментируй:
+                // 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        } catch (error) {
-            alert('Ошибка: ' + error.message);
+        });
+        
+        // 📥 Читаем ответ даже если статус не 200
+        const responseData = await response.json().catch(() => ({}));
+        console.log('📡 Ответ сервера:', response.status, responseData);
+        
+        if (response.ok) {
+            alert('✅ Услуга удалена!');
+            // 🔄 Обновляем все списки
+            await Promise.all([
+                loadServicesList(),
+                loadStats(),
+                loadServicesForEdit()
+            ]);
+        } else {
+            // 🚨 Показываем детальную ошибку от сервера
+            const errorMsg = responseData.detail || responseData.message || JSON.stringify(responseData);
+            console.error('❌ Ошибка удаления:', errorMsg);
+            alert(`❌ Не удалось удалить услугу:\n${errorMsg}`);
         }
+    } catch (error) {
+        console.error('💥 Сетевая ошибка:', error);
+        alert(`❌ Ошибка сети: ${error.message}\n\nПроверьте, что сервер запущен на ${API_URL}`);
     }
 }
 
