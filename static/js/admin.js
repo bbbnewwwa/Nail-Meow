@@ -124,7 +124,7 @@ async function loadServicesForEdit() {
         const select = document.getElementById('editServiceSelect');
         if (!select) return;
         
-        select.innerHTML = '<option value="">-- Выберите услугу --</option>';
+        select.innerHTML = '<option value="">Выберите услугу</option>';
         services.forEach(service => {
             const option = document.createElement('option');
             option.value = service.id;
