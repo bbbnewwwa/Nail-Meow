@@ -681,3 +681,114 @@ nav a:hover::after,
 nav a.active::after {
     max-width: 80%;
 }
+
+   /* 14. ADMIN - ДИНАМИЧЕСКИЕ ЭЛЕМЕНТЫ (для JS) */
+
+/* Карточка услуги в админке */
+.admin-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.admin-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.admin-card h3 {
+    color: var(--pink-dark);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.admin-card .price {
+    font-size: 1.2rem;
+    margin: 0.2rem 0;
+}
+
+.admin-card p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+}
+
+/* Кнопки действий в админ-карточке */
+.admin-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 0.4rem 0.9rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-edit {
+    background: var(--pink-light);
+    color: var(--pink-dark);
+}
+
+.btn-edit:hover {
+    background: var(--pink-main);
+    color: var(--white);
+}
+
+.btn-delete {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.btn-delete:hover {
+    background: #ef5350;
+    color: var(--white);
+}
+
+/* Состояния загрузки и ошибок */
+.loading {
+    text-align: center;
+    color: var(--text-light);
+    padding: 2rem;
+}
+
+.error {
+    text-align: center;
+    color: #c62828;
+    padding: 1rem;
+    background: #ffebee;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+}
+
+/* Адаптив для админ-карточек */
+@media (max-width: 768px) {
+    .admin-card {
+        padding: 1rem;
+    }
+    
+    .admin-actions {
+        flex-direction: column;
+    }
+    
+    .btn-edit,
+    .btn-delete {
+        width: 100%;
+        justify-content: center;
+    }
+}
