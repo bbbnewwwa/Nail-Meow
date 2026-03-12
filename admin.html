@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Nail Meow</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🐱 Nail Meow Admin</div>
+            <ul>
+                <li><a href="index.html">На сайт</a></li>
+                <li><a href="admin.html" class="active">Админ-панель</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="admin-container">
+        <h1>🛠️ Админ-панель</h1>
+        <section class="admin-section">
+            <h2>Управление услугами</h2>
+            <div id="servicesAdmin" class="admin-grid"></div>
+        </section>
+        <section class="admin-section">
+            <h2>Добавить услугу</h2>
+            <form id="addServiceForm" class="admin-form">
+                <label>
+                    Название:
+                    <input type="text" id="serviceName" required>
+                </label>
+                <label>
+                    Цена (₽):
+                    <input type="number" id="servicePrice" required>
+                </label>
+                <label>
+                    Длительность (мин):
+                    <input type="number" id="serviceDuration">
+                </label>
+                <label>
+                    Категория:
+                    <input type="text" id="serviceCategory">
+                </label>
+                <label>
+                    Описание:
+                    <textarea id="serviceDescription"></textarea>
+                </label>
+                <button type="submit" class="btn-admin">Добавить</button>
+            </form>
+    </main>
+    <footer>
+        <p>&copy; 2026 Nail Meow Admin Panel</p>
+    </footer>
+</body>
+</html>

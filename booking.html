@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись - Nail Meow</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🐱 Nail Meow</div>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="booking.html">Запись</a></li>
+                <li><a href="index.html#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Онлайн запись</h1>
+        <form id="bookingForm">
+            <label>Услуга:
+                <select id="service" required></select>
+            </label>
+            <label>Дата и время:
+                <input type="datetime-local" id="appointmentDate" required>
+            </label>
+            <label>Ваше имя:
+                <input type="text" id="clientName" required>
+            </label>
+            <label>Телефон:
+                <input type="tel" id="clientPhone" required>
+            </label>
+            <label>Комментарий:
+                <textarea id="comment"></textarea>
+            </label>
+            <button type="submit" class="btn">Записаться</button>
+        </form>
+    </main>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
