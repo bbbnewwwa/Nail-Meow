@@ -79,7 +79,7 @@ async function quickEditPrice(id, currentPrice) {
 
 // ========== УДАЛЕНИЕ УСЛУГИ ==========
 async function deleteService(id) {
-    // 🔎 Проверка: точно ли есть ID
+
     if (!id) {
         console.error('❌ ID услуги не передан');
         alert('Ошибка: не удалось определить услугу для удаления');
@@ -97,12 +97,9 @@ async function deleteService(id) {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                // 🔐 Если бэкенд требует авторизацию — раскомментируй:
-                // 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
         
-        // 📥 Читаем ответ даже если статус не 200
         const responseData = await response.json().catch(() => ({}));
         console.log('📡 Ответ сервера:', response.status, responseData);
         
@@ -115,7 +112,7 @@ async function deleteService(id) {
                 loadServicesForEdit()
             ]);
         } else {
-            // 🚨 Показываем детальную ошибку от сервера
+
             const errorMsg = responseData.detail || responseData.message || JSON.stringify(responseData);
             console.error('❌ Ошибка удаления:', errorMsg);
             alert(`❌ Не удалось удалить услугу:\n${errorMsg}`);
