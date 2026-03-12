@@ -20,7 +20,7 @@ async function loadStats() {
     }
 }
 
-// ========== СПИСОК УСЛУГ ==========
+// ========== СПИСОК УСЛУГ (стилизация под общий дизайн) ==========
 async function loadServicesList() {
     try {
         const response = await fetch(`${API_URL}/services/`);
@@ -30,19 +30,22 @@ async function loadServicesList() {
         if (!container) return;
         
         if (services.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Услуг пока нет. Добавьте первую услугу!</p>';
+            container.innerHTML = '<p style="text-align: center; color: var(--text-light); padding: 2rem;">Услуг пока нет. Добавьте первую услугу!</p>';
             return;
         }
         
+        // ✅ Генерация карточек в едином стиле с CSS
         container.innerHTML = services.map(service => `
-            <div class="admin-card">
+            <div class="service-card admin-service-card">
+                <div class="service-icon">💅</div>
                 <h3>${escapeHtml(service.name)}</h3>
                 <div class="price">${service.price} ₽</div>
-                <p>⏱ ${service.duration || 60} мин</p>
-                <p>📁 ${escapeHtml(service.category || 'Общее')}</p>
+                <p class="description">
+                    ${escapeHtml(service.category || 'Общее')} • ${service.duration || 60} мин
+                </p>
                 <div class="admin-actions">
-                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn-edit">✏️ Цена</button>
-                    <button onclick="deleteService(${service.id})" class="btn-delete">🗑️</button>
+                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn btn-secondary btn-sm">✏️ Цена</button>
+                    <button onclick="deleteService(${service.id})" class="btn btn-danger btn-sm">🗑️</button>
                 </div>
             </div>
         `).join('');
@@ -79,7 +82,6 @@ async function quickEditPrice(id, currentPrice) {
 
 // ========== УДАЛЕНИЕ УСЛУГИ ==========
 async function deleteService(id) {
-
     if (!id) {
         console.error('❌ ID услуги не передан');
         alert('Ошибка: не удалось определить услугу для удаления');
@@ -95,9 +97,7 @@ async function deleteService(id) {
         
         const response = await fetch(`${API_URL}/services/${id}`, {
             method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
+            headers: { 'Content-Type': 'application/json' }
         });
         
         const responseData = await response.json().catch(() => ({}));
@@ -105,14 +105,8 @@ async function deleteService(id) {
         
         if (response.ok) {
             alert('✅ Услуга удалена!');
-            // 🔄 Обновляем все списки
-            await Promise.all([
-                loadServicesList(),
-                loadStats(),
-                loadServicesForEdit()
-            ]);
+            await Promise.all([loadServicesList(), loadStats(), loadServicesForEdit()]);
         } else {
-
             const errorMsg = responseData.detail || responseData.message || JSON.stringify(responseData);
             console.error('❌ Ошибка удаления:', errorMsg);
             alert(`❌ Не удалось удалить услугу:\n${errorMsg}`);
@@ -164,7 +158,7 @@ function showEditForm(service) {
     document.getElementById('editServiceCategory').value = service.category || '';
     document.getElementById('editServiceDescription').value = service.description || '';
     
-    form.style.display = 'grid';
+    form.style.display = 'flex';  // ✅ flex, а не grid (соответствует .admin-form в CSS)
 }
 
 function hideEditForm() {
