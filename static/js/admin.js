@@ -37,15 +37,14 @@ async function loadServicesList() {
         // ✅ Генерация карточек в едином стиле с CSS
         container.innerHTML = services.map(service => `
             <div class="service-card admin-service-card">
-                <div class="service-icon">💅</div>
                 <h3>${escapeHtml(service.name)}</h3>
                 <div class="price">${service.price} ₽</div>
                 <p class="description">
                     ${escapeHtml(service.category || 'Общее')} • ${service.duration || 60} мин
                 </p>
                 <div class="admin-actions">
-                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn btn-secondary btn-sm">✏️ Цена</button>
-                    <button onclick="deleteService(${service.id})" class="btn btn-danger btn-sm">🗑️</button>
+                    <button onclick="quickEditPrice(${service.id}, ${service.price})" class="btn btn-secondary btn-sm">Изменить цену</button>
+                    <button onclick="deleteService(${service.id})" class="btn btn-danger btn-sm">Удалить</button>
                 </div>
             </div>
         `).join('');
