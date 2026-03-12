@@ -17,7 +17,7 @@
     
     /* Эффекты */
     --shadow: 0 4px 20px rgba(255, 105, 180, 0.15);
-    --shadow-hover: 0 8px 25px rgba(255, 105, 180, 0.25);       
+    --shadow-hover: 0 8px 25px rgba(255, 105, 180, 0.25);
     --radius: 16px;
     --radius-sm: 8px;
     --transition: all 0.3s ease;
@@ -113,23 +113,42 @@ nav a.active:hover {
     color: var(--white);
 }
 
+.hero-image {
+    max-width: 600px;
+
 /* 4. HERO & PAGE HEADER */
 .hero {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     background: linear-gradient(135deg, var(--pink-light), var(--white));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: auto;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    color: var(--pink-dark);
-    margin-bottom: 1rem;
+.hero-image {
+    max-width: 600px;  /* ✅ Уменьшила с 900px до 600px */
+    width: 90%;
+    margin: 0 auto;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: block;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 2rem;
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+.hero .btn {
+    margin-top: 1rem;
 }
 
 .page-header {
@@ -147,6 +166,18 @@ nav a.active:hover {
 
 .page-header p {
     color: var(--text-light);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-image {
+        max-width: 400px;  /* ✅ На мобильных ещё меньше */
+        width: 95%;
+    }
 }
 
 /* 5. КНОПКИ (универсальные) */
@@ -672,9 +703,7 @@ nav a.active::after {
     max-width: 80%;
 }
 
-   /* 14. ADMIN - ДИНАМИЧЕСКИЕ ЭЛЕМЕНТЫ (для JS) */
-
-/* Карточка услуги в админке */
+/* 15. ADMIN - ДИНАМИЧЕСКИЕ ЭЛЕМЕНТЫ (для JS) */
 .admin-card {
     background: var(--white);
     border-radius: var(--radius);
@@ -708,7 +737,6 @@ nav a.active::after {
     margin: 0.2rem 0;
 }
 
-/* Кнопки действий в админ-карточке */
 .admin-actions {
     display: flex;
     gap: 0.5rem;
@@ -716,8 +744,7 @@ nav a.active::after {
     flex-wrap: wrap;
 }
 
-.btn-edit,
-.btn-delete {
+.btn-edit {
     padding: 0.4rem 0.9rem;
     border: none;
     border-radius: var(--radius-sm);
@@ -728,9 +755,6 @@ nav a.active::after {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-}
-
-.btn-edit {
     background: var(--pink-light);
     color: var(--pink-dark);
 }
@@ -740,17 +764,6 @@ nav a.active::after {
     color: var(--white);
 }
 
-.btn-delete {
-    background: #ffebee;
-    color: #c62828;
-}
-
-.btn-delete:hover {
-    background: #ef5350;
-    color: var(--white);
-}
-
-/* Состояния загрузки и ошибок */
 .loading {
     text-align: center;
     color: var(--text-light);
@@ -766,7 +779,6 @@ nav a.active::after {
     margin: 1rem 0;
 }
 
-/* Адаптив для админ-карточек */
 @media (max-width: 768px) {
     .admin-card {
         padding: 1rem;
@@ -776,8 +788,7 @@ nav a.active::after {
         flex-direction: column;
     }
     
-    .btn-edit,
-    .btn-delete {
+    .btn-edit {
         width: 100%;
         justify-content: center;
     }
